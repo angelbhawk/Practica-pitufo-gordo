@@ -15,7 +15,7 @@ namespace P5_19310896TV2021
     {
         Nodo p, q;
         LSEL L1, L2;
-        string cadenaGenerada;
+        string cadenaGenerada, cadenaGenerada2;
         int valorGenerado;
 
         public Form1()
@@ -71,7 +71,7 @@ namespace P5_19310896TV2021
             int cadenaRequerida = Convert.ToInt32(txtPS.Text), e;
             p = L1.Inicio; // agarra el primer valor de la lista
 
-            cadenaGenerada = "";
+            cadenaGenerada = ""; cadenaGenerada2 = "";
             e = 0;
             valorGenerado = 0;
 
@@ -79,6 +79,7 @@ namespace P5_19310896TV2021
             {
                 e = p.Dato;
                 cadenaGenerada += e; // con cada iteracion le suma un valor de la lista a la cadena
+                cadenaGenerada2 += e+" + ";
 
                 valorGenerado += e;
                 p = p.Liga; // recorre la lista
@@ -92,12 +93,12 @@ namespace P5_19310896TV2021
                         int vi = Convert.ToInt32(cadenaGenerada);
                         L2.Insertar(ref L2, vi);
                         valorGenerado = 0;
-                        return Convert.ToString(cadenaGenerada);
+                        return Convert.ToString(cadenaGenerada2);
                     }
                 }
             }
             L1.Eliminar(ref L1, L1.Inicio.Dato);
-            return "";
+            return null;
         }
 
         private string ProcesarCadena(string c)
@@ -122,8 +123,13 @@ namespace P5_19310896TV2021
             while (L1.Length(L1) != 0)
             {
                 string res = GenerarCadena();
-                if(res != "")
-                    LBConvinaciones.Items.Add(ProcesarCadena(res));
+                //if(res != "")
+                if (res != null)
+                {
+                    res = res.Remove(res.Length - 2);
+                    LBConvinaciones.Items.Add(res + " = " + Convert.ToInt32(txtPS.Text));
+                }
+                
             }
         }
     }
