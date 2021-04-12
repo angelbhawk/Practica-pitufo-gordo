@@ -75,7 +75,7 @@
             this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.button1.Location = new System.Drawing.Point(19, 53);
-            this.button1.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.button1.Margin = new System.Windows.Forms.Padding(0);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(183, 25);
             this.button1.TabIndex = 4;
@@ -121,7 +121,7 @@
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
             this.btnSalir.Location = new System.Drawing.Point(12, 332);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(456, 23);
+            this.btnSalir.Size = new System.Drawing.Size(222, 23);
             this.btnSalir.TabIndex = 6;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -162,7 +162,7 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Ps";
             // 
-            // Form1
+            // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -172,7 +172,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxRegistro);
             this.Controls.Add(this.btnSalir);
-            this.Name = "Form1";
+            this.Name = "Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Problema del pitufo gordo";
             this.gbxRegistro.ResumeLayout(false);

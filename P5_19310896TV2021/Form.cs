@@ -13,10 +13,9 @@ namespace P5_19310896TV2021
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        Nodo p, q;
-        LSEL L1, L2;
-        string cadenaGenerada, cadenaGenerada2;
-        int valorGenerado, count = 0; int[] array, lista;
+        Nodo p; LSEL L1, L2;
+        int[] array, lista;
+        int count = 0;
 
         public Form()
         {
@@ -71,47 +70,23 @@ namespace P5_19310896TV2021
         public int[] Combinationint(string str)
         {
             if (string.IsNullOrEmpty(str))
-                throw new ArgumentException("Invalid input");
+                return null;
             if (str.Length == 1)
                 return new int[] { Convert.ToInt32(str) };
 
             char c = str[str.Length - 1];
              
             string[] returnArray = Array.ConvertAll(Combinationint(str.Substring(0, str.Length - 1)), x => x.ToString());
+
             List<string> finalArray = new List<string>();
+
             foreach (string s in returnArray)
                 finalArray.Add(s);
             finalArray.Add(c.ToString());
-            int j = 0;
+
             foreach (string s in returnArray)
             {
                 finalArray.Add(s + c); 
-                finalArray.Add(c + s);
-            }
-   
-            returnArray = finalArray.ToArray();
-            foreach (string s in returnArray)
-            {
-                if (str.Length == count)
-                {
-                    if (s.Length < str.Length - 1)
-                    {
-                        foreach (char k in str)
-                        {
-                            foreach (char m in str)
-                            {
-                                if (k != m && !s.Contains(k) && !s.Contains(m))
-                                {
-                                    finalArray.Add(s + k);
-                                    finalArray.Add(s + m + k);
-                                    finalArray.Add(m.ToString() + k.ToString());
-                                    finalArray.Add(m + s + k);
-                                }
-                            }
-                        }
-                    }
-                }
-                j++;
             }
 
             int[] retarr = (Array.ConvertAll(finalArray.ToArray(), int.Parse)).Distinct().ToArray();
@@ -127,13 +102,18 @@ namespace P5_19310896TV2021
             CrearArreglo();
             lista = Getdataint(array);
 
-            for (int i = 0; i < lista.Length; i++)
+            if (txtPS.Text != "")
             {
-                if (Validar(lista[i])) 
+                for (int i = 0; i < lista.Length; i++)
                 {
-                    LBConvinaciones.Items.Add(lista[i]);
+                    if (Validar(lista[i]))
+                    {
+                        LBConvinaciones.Items.Add(lista[i]);
+                    }
                 }
             }
+            else
+                MessageBox.Show("Ingrese un valor");
         }
 
         private bool Validar(int valor)
