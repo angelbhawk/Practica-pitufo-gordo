@@ -18,7 +18,7 @@ namespace P5_19310896TV2021
 
         internal Nodo Inicio { get => inicio; set => inicio = value; }
 
-        public void Insertar(ref LSEL lis, int x)
+        public void Insertar(ref LSEL lis, string x)
         {
             Nodo p = new Nodo(x);
             if (lis.Inicio == null)
@@ -45,7 +45,7 @@ namespace P5_19310896TV2021
                 }
             }
         }
-        public void Eliminar(ref LSEL lis, int x)
+        public void Eliminar(ref LSEL lis, string x)
         {
             Nodo p = null, q = null;
             if (lis.Inicio != null)

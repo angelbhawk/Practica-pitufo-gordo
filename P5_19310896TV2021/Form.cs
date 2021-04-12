@@ -13,24 +13,25 @@ namespace P5_19310896TV2021
 {
     public partial class Form : System.Windows.Forms.Form
     {
-        Nodo p; LSEL L1, L2;
-        int[] array, lista;
-        int count = 0;
+        Nodo p; LSEL LstValores, LstCombinaciones;
 
         public Form()
         {
             InitializeComponent();
-            L1 = new LSEL();
+            LstValores = new LSEL();
+            LstCombinaciones = new LSEL();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        // Eventos
+
+        private void btnInsertar_Click(object sender, EventArgs e)
         {
-            int x = 0;
+            string x = "0";
             try
             {
-                x = int.Parse(txtPesos.Text);
-                L1.Insertar(ref L1, x);
-                L1.Mostrar(L1, LBPesos);
+                x = txtPesos.Text;
+                LstValores.Insertar(ref LstValores, x);
+                LstValores.Mostrar(LstValores, LBPesos);
             }
             catch (Exception ms)
             {
@@ -44,97 +45,114 @@ namespace P5_19310896TV2021
             }
         }
 
-        private void btnSalir_Click(object sender, EventArgs e)
+        private void btnConbinaciones_Click(object sender, EventArgs e)
         {
-            Application.Exit();
-        }
-
-        private void CrearArreglo()
-        {
-            p = L1.Inicio;
-            array = new int[L1.Length(L1)];
-
-            for (int i = 0; i < L1.Length(L1); i++)
-            {
-                array[i] = p.Dato;
-                p = p.Liga;
-            }
-        }
-
-        public int[] Getdataint(int[] arr)
-        {
-            count = arr.Length;
-            return Combinationint(string.Join("", arr));
-        }
-
-        public int[] Combinationint(string str)
-        {
-            if (string.IsNullOrEmpty(str))
-                return null;
-            if (str.Length == 1)
-                return new int[] { Convert.ToInt32(str) };
-
-            char c = str[str.Length - 1];
-             
-            string[] returnArray = Array.ConvertAll(Combinationint(str.Substring(0, str.Length - 1)), x => x.ToString());
-
-            List<string> finalArray = new List<string>();
-
-            foreach (string s in returnArray)
-                finalArray.Add(s);
-            finalArray.Add(c.ToString());
-
-            foreach (string s in returnArray)
-            {
-                finalArray.Add(s + c); 
-            }
-
-            int[] retarr = (Array.ConvertAll(finalArray.ToArray(), int.Parse)).Distinct().ToArray();
-            Array.Sort(retarr);
-            return retarr;
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-            L2 = new LSEL();
+            LstCombinaciones = new LSEL();
             LBConvinaciones.Items.Clear();
 
-            CrearArreglo();
-            lista = Getdataint(array);
+            ObtenerValores();
 
             if (txtPS.Text != "")
             {
-                for (int i = 0; i < lista.Length; i++)
+
+                p = LstCombinaciones.Inicio;
+                for (int i = 0; i < LstCombinaciones.Length(LstCombinaciones); i++)
                 {
-                    if (Validar(lista[i]))
+                    if (Validar(p.Dato))
                     {
-                        LBConvinaciones.Items.Add(lista[i]);
+                        LBConvinaciones.Items.Add(p.Dato + " = " + txtPS.Text);
                     }
+                    p = p.Liga;
                 }
             }
             else
                 MessageBox.Show("Ingrese un valor");
         }
 
-        private bool Validar(int valor)
+        private void btnSalir_Click(object sender, EventArgs e)
         {
-            String numeros = valor.ToString();
-            char[] arrayNumeros = numeros.ToCharArray();
+            Application.Exit();
+        }
 
-            int suma = 0;
-            foreach (char numero in arrayNumeros)
+        // Métodos
+
+        private void ObtenerValores()
+        {
+            LstCombinaciones = CombinarValores(ConcatenarLista());
+        }
+
+        private string ConcatenarLista()
+        {
+            string cadenaConcatenada = "";
+            p = LstValores.Inicio;
+
+            for (int i = 0; i < LstValores.Length(LstValores); i++)
             {
-                suma += int.Parse(numero.ToString());
+                cadenaConcatenada += p.Dato;
+                p = p.Liga;
             }
+
+            return cadenaConcatenada;
+        }
+
+        private LSEL CombinarValores(string cadena)
+        {
+            if (string.IsNullOrEmpty(cadena))
+                return null;
+            if (cadena.Length == 1)
+            {
+                LSEL LstUnitaria = new LSEL();
+                LstUnitaria.Insertar(ref LstUnitaria,cadena);
+                return LstUnitaria;
+            }
+
+            char c = cadena[cadena.Length - 1];
+
+            LSEL LstCadenas = CombinarValores(cadena.Substring(0, cadena.Length - 1));
+            LSEL LstFinal = new LSEL();
+
+            p = LstCadenas.Inicio;
+            for (int i = 0; i < LstCadenas.Length(LstCadenas); i++)
+            {
+                LstFinal.Insertar(ref LstFinal, p.Dato);
+                p = p.Liga;
+            }
+
+            LstFinal.Insertar(ref LstFinal, c.ToString());
+
+            p = LstCadenas.Inicio;
+            for (int i = 0; i < LstCadenas.Length(LstCadenas); i++)
+            {
+                LstFinal.Insertar(ref LstFinal, p.Dato + " + " + c);
+                p = p.Liga;
+            }
+
+            return LstFinal;
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            LBPesos.Items.Clear();
+            LBConvinaciones.Items.Clear();
+            txtPS.Text = "";
+            txtPesos.Text = "";
+
+            LstCombinaciones = new LSEL();
+            LstValores = new LSEL();
+        }
+
+        private bool Validar(string valor)
+        {
+            int suma = 0;
+            DataTable dt = new DataTable();
+            suma = Convert.ToInt32(dt.Compute(valor, ""));
 
             if (suma == Convert.ToInt32(txtPS.Text))
             {
                 return true;
             }
             else
-            {
                 return false;
-            }
         }
     }
 }

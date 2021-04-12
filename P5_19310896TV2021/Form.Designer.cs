@@ -31,14 +31,15 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtPesos = new System.Windows.Forms.TextBox();
             this.txtPS = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnInsertar = new System.Windows.Forms.Button();
+            this.btnConbinaciones = new System.Windows.Forms.Button();
             this.LBPesos = new System.Windows.Forms.ListBox();
             this.LBConvinaciones = new System.Windows.Forms.ListBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.gbxRegistro = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbxRegistro.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -68,34 +69,34 @@
             this.txtPS.Size = new System.Drawing.Size(183, 20);
             this.txtPS.TabIndex = 3;
             // 
-            // button1
+            // btnInsertar
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.Location = new System.Drawing.Point(19, 53);
-            this.button1.Margin = new System.Windows.Forms.Padding(0);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(183, 25);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "Insertar";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btnInsertar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.btnInsertar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnInsertar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInsertar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnInsertar.Location = new System.Drawing.Point(19, 53);
+            this.btnInsertar.Margin = new System.Windows.Forms.Padding(0);
+            this.btnInsertar.Name = "btnInsertar";
+            this.btnInsertar.Size = new System.Drawing.Size(183, 25);
+            this.btnInsertar.TabIndex = 4;
+            this.btnInsertar.Text = "Insertar";
+            this.btnInsertar.UseVisualStyleBackColor = false;
+            this.btnInsertar.Click += new System.EventHandler(this.btnInsertar_Click);
             // 
-            // button2
+            // btnConbinaciones
             // 
-            this.button2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.Location = new System.Drawing.Point(19, 53);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(183, 25);
-            this.button2.TabIndex = 4;
-            this.button2.Text = "Conbinaciones";
-            this.button2.UseVisualStyleBackColor = false;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnConbinaciones.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.btnConbinaciones.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnConbinaciones.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnConbinaciones.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnConbinaciones.Location = new System.Drawing.Point(19, 53);
+            this.btnConbinaciones.Name = "btnConbinaciones";
+            this.btnConbinaciones.Size = new System.Drawing.Size(183, 25);
+            this.btnConbinaciones.TabIndex = 4;
+            this.btnConbinaciones.Text = "Conbinaciones";
+            this.btnConbinaciones.UseVisualStyleBackColor = false;
+            this.btnConbinaciones.Click += new System.EventHandler(this.btnConbinaciones_Click);
             // 
             // LBPesos
             // 
@@ -119,7 +120,7 @@
             this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.btnSalir.Location = new System.Drawing.Point(12, 332);
+            this.btnSalir.Location = new System.Drawing.Point(246, 333);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(222, 23);
             this.btnSalir.TabIndex = 6;
@@ -131,7 +132,7 @@
             // 
             this.gbxRegistro.Controls.Add(this.txtPesos);
             this.gbxRegistro.Controls.Add(this.LBPesos);
-            this.gbxRegistro.Controls.Add(this.button1);
+            this.gbxRegistro.Controls.Add(this.btnInsertar);
             this.gbxRegistro.Controls.Add(this.label1);
             this.gbxRegistro.Location = new System.Drawing.Point(12, 14);
             this.gbxRegistro.Name = "gbxRegistro";
@@ -143,7 +144,7 @@
             // 
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.LBConvinaciones);
-            this.groupBox1.Controls.Add(this.button2);
+            this.groupBox1.Controls.Add(this.btnConbinaciones);
             this.groupBox1.Controls.Add(this.txtPS);
             this.groupBox1.Location = new System.Drawing.Point(246, 14);
             this.groupBox1.Name = "groupBox1";
@@ -162,6 +163,20 @@
             this.label3.TabIndex = 0;
             this.label3.Text = "Ps";
             // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(33)))), ((int)(((byte)(47)))), ((int)(((byte)(61)))));
+            this.btnLimpiar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLimpiar.Font = new System.Drawing.Font("Arial", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLimpiar.ForeColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.btnLimpiar.Location = new System.Drawing.Point(12, 333);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(222, 23);
+            this.btnLimpiar.TabIndex = 9;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = false;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -169,6 +184,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(73)))), ((int)(((byte)(94)))));
             this.ClientSize = new System.Drawing.Size(480, 368);
             this.ControlBox = false;
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxRegistro);
             this.Controls.Add(this.btnSalir);
@@ -188,14 +204,15 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtPesos;
         private System.Windows.Forms.TextBox txtPS;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnInsertar;
+        private System.Windows.Forms.Button btnConbinaciones;
         private System.Windows.Forms.ListBox LBPesos;
         private System.Windows.Forms.ListBox LBConvinaciones;
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.GroupBox gbxRegistro;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }
 
